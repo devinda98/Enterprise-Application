@@ -1,0 +1,10 @@
+{
+  "/magnify-services/*": {
+    "target": "http://10.9.0.3:7070/magnify-services",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/magnify-services": ""
+    }
+  }
+}
