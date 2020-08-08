@@ -1,19 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GadgetTracerLogComponent } from 'projects/gadget-tracer-log/src/public-api';
-import { SecurityAuthGuard } from './security/security.authguard';
-
+import { TestComponent } from './test/test.component';
+import { CheckoutComponent } from '../../projects/gadget-tracer-log/src/lib/checkout/checkout.component';
+import { QuantityManagerComponent } from 'projects/gadget-tracer-log/src/lib/quantity-manager/quantity-manager.component';
 
 const routes: Routes = [
   {
     path: 'gadget-tracer-log',
     component: GadgetTracerLogComponent,
-    canActivate: [SecurityAuthGuard],
 
   },
   {
+    path: 'search',
+    component: GadgetTracerLogComponent,
+
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+
+  },
+  {
+    path: 'quantity',
+    component: QuantityManagerComponent,
+
+  },
+  {path:'test',component:TestComponent},
+  {
     path: '',
-    redirectTo: 'gadget-tracer-log',
+    redirectTo: 'test',
     pathMatch: 'full',
   },
 ];

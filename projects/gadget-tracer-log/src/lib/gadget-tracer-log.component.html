@@ -1,5 +1,103 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Hello Training Team</mat-card-title>
+    <mat-card-title>Product Search Widget</mat-card-title>
   </mat-card-header>
 </mat-card>
+
+
+<mat-card *ngIf="!hideFilters" class="filter-card">
+  <mat-card-content>
+    <form [formGroup]="filterForm" fxLayout fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="space-evenly start">
+      <div fxLayout="column" fxFlex="60%" fxLayoutGap="0px">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Product Code</mat-label>
+          <input type="text" matInput formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Product Name</mat-label>
+          <input type="text" matInput formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Catagory</mat-label>
+          <mat-select matNativeControl formControlName="district" (change)="getDistrict($event.target.value)">
+            <mat-option *ngFor="let district of districtList" [value]="district.district">{{district.id}} : {{district.district}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row" class="actions mat-card-actions">
+          <button mat-flat-button color="primary" (click)="search()"> Search
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="button-card">
+  <mat-card-content>
+    <div class="actions mat-card-actions" fxLayout="row">
+      <div fxFlex fxLayoutAlign="end">
+        <button mat-flat-button fxLayoutAlign="end" color="primary" (click)="openCreateDialog()">
+          Create New <mat-icon>create</mat-icon>
+        </button>
+        <button mat-stroked-button color="primary" class="mat-stroked-button-actions"
+          (click)="hideFilters = !hideFilters"> {{ hideFilters ? 'Show Filters' : 'Hide Filters'}} <mat-icon>
+            {{ hideFilters ? 'unfold_more' : 'unfold_less'}}</mat-icon> </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="data-card">
+  <mat-card-content>
+    <table id="DataPreview" mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8"
+      width="100%">
+
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef>Product Code </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.firstName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef>Product Name </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.lastName}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef> Retail Price </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.gender}}</mat-cell>
+        <td mat-cell *matCellDef="let element"> </td>
+
+      </ng-container>
+
+      <ng-container matColumnDef="dob">
+        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.dob}}</mat-cell>
+        <mat-cell *matCellDef="let element">
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef> Total</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.address}}</mat-cell>
+        <mat-cell *matCellDef="let element">
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="updateSymptomCodeConfigDialog(row)"> </mat-row>
+
+    </table>
+
+    <mat-paginator [length]="totalCount" [pageSizeOptions]="[5, 10, 20, 50]" (page)="load()" showFirstLastButtons>
+    </mat-paginator>
+
+  </mat-card-content>
+</mat-card>
+
+
+
+

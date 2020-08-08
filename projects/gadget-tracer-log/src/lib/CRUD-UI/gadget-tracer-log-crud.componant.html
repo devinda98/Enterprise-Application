@@ -1,0 +1,101 @@
+<br>
+<mat-card class="filter-card">
+    <mat-card-header class="card-title-text">
+        <mat-card-title>
+          <span *ngIf="titleDisplay">
+            {{mode == formMode.NEW ? 'CREATE USER' : 'EDIT USER'}}
+          </span>
+          <span *ngIf="!titleDisplay">
+            {{title}}
+          </span>
+        </mat-card-title>
+        <div fxFlex></div>
+        <mat-icon class="mat-close-button" (click)="cancel()">close</mat-icon>
+      </mat-card-header>
+  <mat-card-content>
+      <form [formGroup]="userCreateForm" *ngIf="showFormContent" fxLayout fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="space-evenly start">
+        <div fxLayout="column" fxFlex="40%" fxLayoutGap="0px">
+         
+        <mat-form-field class="example-full-width">
+          <mat-label>First Name</mat-label>
+          <input type="text" matInput formControlName="firstName">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>DOB</mat-label>
+          <input matInput [matDatepicker]="dob" formControlName="dob">
+          <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+          <mat-datepicker #dob></mat-datepicker>
+        </mat-form-field>
+          <br>
+        <mat-radio-group aria-label="Select an option" (change)="radioChange($event)">
+          <mat-label>Gender</mat-label> &nbsp; &nbsp;
+          <mat-radio-button value="Female">Female</mat-radio-button>&nbsp;
+          <mat-radio-button value="Male">Male</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <br>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="dateFrom" formControlName="dateFrom">
+            <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+            <mat-datepicker #dateFrom></mat-datepicker>
+          </mat-form-field>
+          &nbsp; &nbsp;
+          <mat-form-field appearance="outline">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="dateTo" formControlName="dateTo">
+            <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+            <mat-datepicker #dateTo></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Districs</mat-label>
+          <mat-select matNativeControl required formControlName="district" (change)="getDistrict($event.target.value)">
+            <mat-option *ngFor="let district of districtList" [value]="district.district">{{district.id}} : {{district.district}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br> 
+        <div>
+          <mat-label>Skills</mat-label> &nbsp; &nbsp;
+          &nbsp;&nbsp;
+          <mat-checkbox value="Java" (change)="getSkills($event)">
+            Java
+          </mat-checkbox> &nbsp;&nbsp;
+          <mat-checkbox value="J2EE" (change)="getSkills($event)">
+            JEE
+          </mat-checkbox> &nbsp;&nbsp;
+          <mat-checkbox value="Angular" (change)="getSkills($event)">
+            Angular
+          </mat-checkbox>
+        </div>
+          <br>
+          <mat-form-field class="example-full-width">
+            <mat-label>Contact Number</mat-label>
+            <input matInput formControlName="contactNo" >
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address">
+          </mat-form-field>
+        
+        <div fxLayout="row" class="actions mat-card-actions">
+            <button mat-flat-button mgn-smallFontSize color="primary" class="mgn-smallFontSize" (click)="cancel()">Cancel & Exit</button>&nbsp; &nbsp;
+            <button mat-flat-button color="primary"  *ngIf="mode==formMode.UPDATE"  (click)="deleteUser(id)">Delete</button>&nbsp;&nbsp;
+            <button mat-flat-button color="primary"(click)="save('save')" >Save</button>&nbsp;&nbsp;
+            <button mat-flat-button color="primary" (click)="save('exit')">Save & Exit</button>
+          </div>
+        </div>
+      </form>
+      <div class="result-progress-bar" *ngIf="showProgressBar">Please wait, while your request being processed.....<br><br>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+  </mat-card-content>
+</mat-card>

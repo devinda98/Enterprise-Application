@@ -1,22 +1,27 @@
-# DmsTraining
+# Database
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
-
-## Install npm dependencies
-
-Run `npm install` after navigated to the dms-training-ui root folder.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
 
 ## Development server
 
-Run `npm start` to deploy the app in your local server. Navigate to `http://localhost:4510/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Renaming the project and root component names according to your own project name
+## Code scaffolding
 
-Under dms-training-ui/projects folder you should have your project folder.
-Currently the project named as 'gadget-tracer-log'.
-You should rename the above project folder name with your own project name.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-**Note:** Once you change the project name from 'gadget-tracer-log' to your own project name
-1. Rename the other file names which contains 'gadget-tracer-log' into your own project name under dms-training-ui/projects/gadget-tracer-log/src/lib folder.
-2. Use Find & Replace feature in your editor to replace all the occurrences of 'gadget-tracer-log' with your own project name.
-3. Component, Module and Service calss names should renamed according to your own project name. (Use Find & Replace feature to do the replacement)
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

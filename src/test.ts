@@ -1,13 +1,18 @@
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
 
-import 'projects/gadget-tracer-log/src/node_modules/zone.js/dist/zone-testing';
-import { getTestBed } from 'projects/gadget-tracer-log/src/node_modules/@angular/core/testing';
+import 'zone.js/dist/zone-testing';
+import { getTestBed } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
-} from 'projects/gadget-tracer-log/src/node_modules/@angular/platform-browser-dynamic/testing';
+} from '@angular/platform-browser-dynamic/testing';
 
-declare const require: any;
+declare const require: {
+  context(path: string, deep?: boolean, filter?: RegExp): {
+    keys(): string[];
+    <T>(id: string): T;
+  };
+};
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(

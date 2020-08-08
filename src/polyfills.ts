@@ -28,8 +28,6 @@ import 'classlist.js';  // Run `npm install --save classlist.js`.
  */
 import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
-
-
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
  * user can disable parts of macroTask/DomEvents patch by setting following flags
@@ -37,7 +35,7 @@ import 'web-animations-js';  // Run `npm install --save web-animations-js`.
  * will put import in the top of bundle, so user need to create a separate file
  * in this directory (for example: zone-flags.ts), and put the following flags
  * into that file, and then add the following code before importing zone.js.
- * import './zone-flags.ts';
+ * import './zone-flags';
  *
  * The flags allowed in zone-flags.ts are listed here.
  *
@@ -63,7 +61,6 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-
 import 'core-js/es/array';
 import 'core-js/es/symbol';
 import 'core-js/es/object';
@@ -79,5 +76,3 @@ import 'core-js/es/regexp';
 import 'core-js/es/map';
 import 'core-js/es/set';
 import 'core-js/es/reflect';
-import 'nodelist-foreach-polyfill';
-import 'element-remove';

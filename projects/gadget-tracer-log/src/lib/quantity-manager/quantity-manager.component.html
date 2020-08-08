@@ -1,0 +1,50 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Quantity Manager</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card class="data-card">
+    <mat-card-content>
+      <table id="DataPreview" mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8"
+        width="100%">
+  
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef>Product Code </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.firstName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef>Product Name </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.lastName}}</mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="gender">
+          <mat-header-cell *matHeaderCellDef> Retail Price </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.gender}}</mat-cell>
+          <td mat-cell *matCellDef="let element"> </td>
+  
+        </ng-container>
+  
+        <ng-container matColumnDef="dob">
+          <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.dob}}</mat-cell>
+          <mat-cell *matCellDef="let element">
+          </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="address">
+          <mat-header-cell *matHeaderCellDef> Total</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.address}}</mat-cell>
+          <mat-cell *matCellDef="let element">
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="updateSymptomCodeConfigDialog(row)"> </mat-row>
+  
+      </table>
+  
+      <mat-paginator [length]="totalCount" [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons>
+      </mat-paginator>
+  
+    </mat-card-content>
+  </mat-card>
